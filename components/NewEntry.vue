@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const { bookendApi } = useRuntimeConfig();
+const config = useRuntimeConfig();
 
 const formData = ref({
   title: '',
@@ -12,7 +12,7 @@ const formData = ref({
 });
 
 const submitForm = async () => {
-  const { data: responseData } = await useFetch(bookendApi, {
+  const { data: responseData } = await useFetch(config.public.bookendApi, {
     method: 'post',
     body: {
       title: formData.value.title,
